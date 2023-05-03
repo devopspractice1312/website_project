@@ -24,7 +24,7 @@ def Container_Name = "${params.container_name}"
         }
         stage('3. Login to DockerHub'){
             steps{
-                withCredentials([string(credentialsId: 'dockerhub_cred', variable: 'password')]) {
+                withCredentials([string(credentialsId: 'dockerhub_id', variable: 'password')]) {
                     sh " docker login -u 9010870895 -p ${password}"
                 }
             }
