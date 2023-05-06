@@ -39,12 +39,12 @@ def Container_Name = "${params.container_name}"
                 script{
                     if ("$Branch"=='master'){
                         sshagent(['Dev_Server']) {
-                            sh "ssh -o StrictHostKeyChecking=no ubuntu@172.31.11.110 docker run -d -p ${Host_Port}:3000 --name ${Container_Name} 9010870895/node_express:${Image_Version}"
+                            sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.44.14 docker run -d -p ${Host_Port}:3000 --name ${Container_Name} 9010870895/node_express:${Image_Version}"
                         }
                     }
                     else
                         sshagent(['ec2_Prod_Server']) {
-                            sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.37.162 docker run -d -p ${Host_Port}:3000 --name ${Container_Name} 9010870895/node_express:${Image_Version}"
+                            sh "ssh -o StrictHostKeyChecking=no ec2-user@172.31.44.14 docker run -d -p ${Host_Port}:3000 --name ${Container_Name} 9010870895/node_express:${Image_Version}"
                         }
                 }
             }
